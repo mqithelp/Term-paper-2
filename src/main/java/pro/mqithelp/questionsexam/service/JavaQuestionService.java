@@ -30,10 +30,14 @@ public class JavaQuestionService implements QuestionService {
     }
 
     @Override
-    public Question getRandomQuestion() {
-        questions.get(4);
-        int randNum = new Random().nextInt(this.size);
-        return questions.get(randNum);
+    public List<Question> getRandomQuestion(int amount) {
+        if (amount > this.size) {
+            throw new IndexOutOfBoundsException();
+        }
+        List<Question> result = new ArrayList<>();
+        int randNum = new Random().nextInt(amount);
+
+        return result;
     }
 
     @Override
