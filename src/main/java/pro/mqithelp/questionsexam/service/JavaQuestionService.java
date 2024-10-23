@@ -1,17 +1,22 @@
 package pro.mqithelp.questionsexam.service;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Random;
-import java.util.Set;
+import org.springframework.stereotype.Service;
 
+import java.util.*;
+
+@Service
 public class JavaQuestionService implements QuestionService {
+    private final List<Question> questions = new ArrayList<>();
+    private int size;
 
-    private Set<Question> questions;
+    public JavaQuestionService() {
+        init();
+        this.size = questions.size();
+    }
 
     @Override
     public Question add(String question, String answer) {
-        return null;
+        return new Question("question", "answer");
     }
 
     @Override
@@ -26,16 +31,17 @@ public class JavaQuestionService implements QuestionService {
 
     @Override
     public Question getRandomQuestion() {
-        int randNum = new Random().nextInt(10);
-        return null;
+        questions.get(4);
+        int randNum = new Random().nextInt(this.size);
+        return questions.get(randNum);
     }
 
     @Override
     public Collection<Question> getAll() {
         return null;
     }
-private void init() {
-    questions = new HashSet<Question>();
+
+      private void init() {
     questions.add(new Question("Что такое JDK?", "JDK (Java Development Kit) — это комплект инструментов для разработки программ на Java, включающий компилятор, библиотеки и инструменты для отладки.?"));
     questions.add(new Question("Что такое JVM?","JVM (Java Virtual Machine) — это виртуальная машина, которая выполняет байт-код Java и обеспечивает платформонезависимость."));
     questions.add(new Question("Что такое JRE?","JRE (Java Runtime Environment) — это среда выполнения Java, которая включает JVM и стандартные библиотеки, необходимые для запуска Java-программ."));
