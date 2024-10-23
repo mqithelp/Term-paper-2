@@ -1,14 +1,16 @@
 package pro.mqithelp.questionsexam.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import pro.mqithelp.questionsexam.service.Question;
 import pro.mqithelp.questionsexam.service.QuestionService;
+
+import java.util.Collection;
+import java.util.List;
 
 @RestController
 @RequestMapping("/exam/")
 public class JavaQuestionController {
+
     private final QuestionService questionService;
 
     public JavaQuestionController(QuestionService questionService) {
@@ -16,19 +18,26 @@ public class JavaQuestionController {
     }
 
     @GetMapping("get/{amount}")
-    public String find(@PathVariable(value = "amount", required = false) Integer amount) {
-        return questionService.getRandomQuestion(amount).toString();
+    public List<Question> find(@PathVariable(value = "amount", required = true) Integer amount) {
+        return questionService.getRandomQuestion(amount);
     }
+
     @GetMapping("java/add")
-    public String add() {
-        return questionService.add("question","answer").toString();
+    public String add(@RequestParam("question") String question,
+                        @RequestParam("answer") String answer) {
+
+        return questionService.add(question, answer);
     }
+
     @GetMapping("java/remove")
-    public String remove() {
-        return null;
+    public String remove(@RequestParam("question") String question,
+                         @RequestParam("answer") String answer) {
+        return questionService.remove(question,answer);
     }
-    @GetMapping("java/find")
-    public String find() {
-        return questionService.getRandomQuestion(2).toString();
+
+    @GetMapping("java")
+    public Collection<Question> getAll() {
+        return questionService.getAll();
     }
+
 }

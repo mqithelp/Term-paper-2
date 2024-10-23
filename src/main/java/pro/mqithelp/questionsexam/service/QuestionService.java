@@ -4,9 +4,8 @@ import java.util.Collection;
 import java.util.List;
 
 public interface QuestionService {
-    Question add(String question, String answer);
-    Question add(Question question);
-    Question remove(Question question);
+    String add(String question, String answer);
+    String remove(String question, String answer);
     List<Question> getRandomQuestion(int amount);
     Collection<Question> getAll();
 }
