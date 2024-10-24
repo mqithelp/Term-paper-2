@@ -82,4 +82,7 @@ public class JavaQuestionService implements QuestionService {
     private boolean isUnicumQuestion(String question, String answer) {
         return !questions.contains(new Question(question, answer));
     }
+    public Collection<Question> getListQuestions() {
+        return questions;
+    }
 }
