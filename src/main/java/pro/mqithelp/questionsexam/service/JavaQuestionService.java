@@ -36,8 +36,8 @@ public class JavaQuestionService implements QuestionService {
 
     @Override
     public List<Question> getRandomQuestion(int amount) {
-        if (amount > getSize()) {
-            throw new IndexOutOfBoundsException("");
+        if (amount > getSize() || amount < 0) {
+            throw new IndexOutOfBoundsException();
         }
         List<Question> result = new ArrayList<>();
         Integer[] listRndIndex = getMixArrayForRandomQuestion(getSize());
