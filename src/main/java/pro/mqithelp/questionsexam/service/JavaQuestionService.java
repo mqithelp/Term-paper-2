@@ -76,12 +76,15 @@ public class JavaQuestionService implements QuestionService {
         questions.add(new Question("10) Что такое коллекции в Java?", "Коллекции — это структуры данных, которые позволяют хранить и управлять группами объектов (например, списки, множества и карты) через интерфейсы из пакета java.util."));
 
     }
+
     private int getSize() {
         return questions.size();
     }
+
     private boolean isUnicumQuestion(String question, String answer) {
         return !questions.contains(new Question(question, answer));
     }
+
     public Collection<Question> getListQuestions() {
         return questions;
     }
